@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Toy</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="/home">Homepage</a></h1>
+        <nav>
+            <ul>
+                <li><a href="/toysgirls-json">Girls (JSON)</a></li>
+                <li><a href="/toysboys-json">Boys (JSON)</a></li>
+                <li><a href="/add-toy">Add Toy</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="add-toy-form-container">
+            <h2>Add a New Toy</h2>
+            <form action="/add-toy" method="POST">
+                <label for="name">Toy Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="type">Type:</label>
+                <select id="type" name="type" required>
+                    <option value="girls">Girls</option>
+                    <option value="boys">Boys</option>
+                </select>
+                <label for="url">Image URL:</label>
+                <input type="text" id="url" name="url" required>
+                <button type="submit">Add Toy</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
