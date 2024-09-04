@@ -7,16 +7,7 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header>
-        <h1><a href="/home">Homepage</a></h1>
-        <nav>
-            <ul>
-                <li><a href="/toysgirls-json">Girls (JSON)</a></li>
-                <li><a href="/toysboys-json">Boys (JSON)</a></li>
-                <li><a href="/add-toy">Add Toy</a></li>
-            </ul>
-        </nav>
-    </header>
+    <%- include('partials/header') %>
     <main>
         <div class="add-toy-form-container">
             <h2>Add a New Toy</h2>
@@ -25,6 +16,8 @@
                 <input type="text" id="name" name="name" required>
                 <label for="type">Type:</label>
                 <select id="type" name="type" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="all">Unisex</option>
                     <option value="girls">Girls</option>
                     <option value="boys">Boys</option>
                 </select>
@@ -34,5 +27,6 @@
             </form>
         </div>
     </main>
+    <%- include('partials/footer') %>   
 </body>
 </html>
