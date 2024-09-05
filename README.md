@@ -16,6 +16,8 @@ Welcome to the Toy Store project! This project is a web application that allows 
 - **Homepage**: Welcome page with links to different toy categories.
 - **Toy Categories**: View toys by type (boys, girls) or all toys.
 - **Add New Toy**: Form to add new toys to the collection.
+- **update Toy**: Form to update toys to the collection.
+- **Delete Toy**: Delete toys from the collection.
 - **JSON Endpoints**: Access toy data in JSON format for boys, girls, and all toys.
 
 ## Installation
