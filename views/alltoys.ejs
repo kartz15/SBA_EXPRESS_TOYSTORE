@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boys Toys</title>
+    <title><%= type %> Toys</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <%- include('partials/header') %>
     <main>
-        <h2>ALL Toys</h2>
+        <h2><%= type %> Toys</h2>
         <section class="toy-list">
             <% toys.forEach(toy => { %>
                 <div class="toy-card">
                     <img src="<%= toy.url %>" alt="<%= toy.name %>">
                     <h3><%= toy.name %></h3>
+                    <a href="/updateToy/<%= toy.id %>" class="btn">Edit Toy</a>
+                    <a href="/deleteToy/<%= toy.id %>" class="btn">Delete Toy</a>
                 </div>
             <% }) %>
         </section>
