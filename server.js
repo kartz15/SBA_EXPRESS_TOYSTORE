@@ -11,8 +11,8 @@ const errorMiddleware = require('./middlewares/errorMiddleware');
 const indexRouter = require('./routes/index');
 
 // Use middleware
-app.use(loggerMiddleware); // Logger middleware logs each request
-app.use(requestTimeMiddleware); // Adds request time to req object
+app.use(loggerMiddleware); 
+app.use(requestTimeMiddleware); 
 
 // Middleware to parse request bodies
 app.use(express.urlencoded({ extended: true }));

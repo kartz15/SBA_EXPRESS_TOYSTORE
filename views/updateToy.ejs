@@ -1,36 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Toy</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-    <%- include('partials/header') %>
-    <main>
-        <h2>Update Toy</h2>
-        <form action="/updateToy/<%= toy.id %>" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="<%= toy.name %>" required>
-            
-            <label for="url">Image URL:</label>
-            <input type="text" id="url" name="url" value="<%= toy.url %>" required>
-            
-            <label for="type">Type:</label>
-            <select id="type" name="type" required>
-                <option value="girls" <%= toy.type === 'girls' ? 'selected' : '' %>>Girls</option>
-                <option value="boys" <%= toy.type === 'boys' ? 'selected' : '' %>>Boys</option>
-                <option value="all" <%= toy.type === 'all' ? 'selected' : '' %>>All</option>
-            </select>
-            
-            <button type="submit">Update Toy</button>
-        </form>
-        
-    </main>
-    <%- include('partials/footer') %>
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

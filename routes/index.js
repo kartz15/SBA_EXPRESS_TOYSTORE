@@ -11,7 +11,7 @@ const allToys = require('../models/alltoys');
 const girlsToys = allToys.filter(toy => toy.type === 'girls');
 const boysToys = allToys.filter(toy => toy.type === 'boys');
 
-// Routes
+// Routes for homepage
 router.get('/', (req, res) => {
     res.send('Welcome Home !!!');
 });
@@ -19,11 +19,10 @@ router.get('/home', (req, res) => {
     res.render('Homepage');
 });
 
-// Route to display JSON data 
+// Routes to display JSON data 
 router.get('/toysgirls-json', (req, res) => {
     res.json(girlsToys); 
 });
-
 router.get('/toysboys-json', (req, res) => {
     res.json(boysToys);
 });
@@ -31,7 +30,7 @@ router.get('/alltoys-json', (req, res) => {
     res.json(allToys); 
 });
 
-// Route to render EJS view 
+// Routes to render EJS view 
 router.get('/toysgirls', (req, res) => {
     res.render('alltoys', { toys: girlsToys , type: 'Girls'});
 });
@@ -42,7 +41,7 @@ router.get('/alltoys', (req, res) => {
     res.render('alltoys', { toys: allToys , type: 'All'}); 
 });
 
-// GET route to display the form
+// GET Route to display the form
 router.get('/add-toy', (req, res) => {
     res.render('addToy');
 });
@@ -57,7 +56,7 @@ router.get('/updateToy/:id', (req, res) => {
     res.render('updateToy', { toy });
 });
 
-// GET route to delete the form
+// GET Route to delete the form
 router.get('/delete-toy', (req, res) => {
     res.render('DeleteToy');
 });
@@ -70,7 +69,7 @@ const getNextId = (toysArray) => {
     return maxId + 1;
 };
 
-// POST route to handle form submissions
+// POST Route to handle form submissions
 router.post('/add-toy', (req, res) => {
     if (!req.body) {
         return res.status(400).send('No data received');
@@ -89,17 +88,15 @@ router.post('/add-toy', (req, res) => {
     }else {
         return res.status(400).send('Invalid type');
     }
-       // Calculate the next available ID
-       let newId;
-       try {
-           newId = getNextId(allToys);
-       } catch (error) {
-           return res.status(500).send(error.message);
-       }
-
+    // Calculate the next available ID
+    let newId;
+    try {
+        newId = getNextId(allToys);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
     const newToy = { id: newId, name, type, url };
     targetArray.push(newToy);
-    // If you update the combined allToys, ensure consistency
     if (type === 'all') {
         const index = allToys.findIndex(toy => toy.id === newId);
         if (index === -1) {
@@ -116,11 +113,9 @@ router.post('/updateToy/:id', (req, res) => {
     const toyId = parseInt(req.params.id, 10);
     const { name, url, type } = req.body;
     const toyIndex = allToys.findIndex(t => t.id === toyId);
-
     if (toyIndex === -1) {
         return res.status(404).send('Toy not found');
     }
-    // Remove the toy from its current category array
     const oldToy = allToys[toyIndex];
     if (oldToy.type === 'girls') {
         const girlsIndex = girlsToys.findIndex(t => t.id === toyId);
@@ -133,10 +128,8 @@ router.post('/updateToy/:id', (req, res) => {
             boysToys.splice(boysIndex, 1);
         }
     }
-    // Update the toy in allToys
     const updatedToy = { id: toyId, name, url, type };
     allToys[toyIndex] = updatedToy;
-    // Add the toy to the correct category array
     if (type === 'girls') {
         girlsToys.push(updatedToy);
     } else if (type === 'boys') {
@@ -152,11 +145,9 @@ router.get('/deleteToy/:id', (req, res) => {
     if (toyIndex === -1) {
         return res.status(404).send('Toy not found');
     }
-    // Find the toy to delete
     const toyToDelete = allToys[toyIndex];
-    // Remove from allToys
     allToys.splice(toyIndex, 1);
-    // Remove from the respective category array
+
     if (toyToDelete.type === 'girls') {
         const girlsIndex = girlsToys.findIndex(t => t.id === toyId);
         if (girlsIndex !== -1) {
