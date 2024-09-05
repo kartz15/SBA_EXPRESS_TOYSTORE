@@ -21,7 +21,6 @@ app.use(express.json());
 // Set view engine
 app.set('view engine', 'ejs');
 
-
 // Serve static files from 'public' directory
 app.use(express.static('public'));
 

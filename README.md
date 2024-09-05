@@ -24,4 +24,4 @@ Follow these steps to get a local copy of the project up and running:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/toy-store.git
+   git clone https://github.com/kartz15/SBA_EXPRESS_TOYSTORE
